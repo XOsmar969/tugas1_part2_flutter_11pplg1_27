@@ -13,9 +13,9 @@ class MyTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: textEditingController, // ✅ Ini penting agar bisa di-clear
+      controller: textEditingController, 
       decoration: InputDecoration(
-        labelText: labelText, // ✅ Lebih baik pakai labelText langsung
+        labelText: labelText, 
         border: OutlineInputBorder(),
       ),
     );
