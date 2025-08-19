@@ -59,12 +59,12 @@ class CalculatorPage extends StatelessWidget {
                 children: [
                   CustomButton(
                     text: "+",
-                    textColor: Colors.blue,
+                    textColor: Colors.purple,
                     onPressed: () => calculatorController.tambah(),
                   ),
                   CustomButton(
                     text: "-",
-                    textColor: Colors.blue,
+                    textColor: Colors.black,
                     onPressed: () => calculatorController.kurang(),
                   ),
                 ],
@@ -76,7 +76,7 @@ class CalculatorPage extends StatelessWidget {
                 children: [
                   CustomButton(
                     text: "X",
-                    textColor: Colors.blue,
+                    textColor: Colors.green,
                     onPressed: () => calculatorController.kali(),
                   ),
                   CustomButton(
@@ -102,7 +102,7 @@ class CalculatorPage extends StatelessWidget {
 
             CustomButton(
               text: "Clear",
-              textColor: Colors.green,
+              textColor: Colors.red,
               onPressed: () => calculatorController.clear(),
             ),
 

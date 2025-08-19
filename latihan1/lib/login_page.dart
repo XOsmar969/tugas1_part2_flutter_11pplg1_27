@@ -18,8 +18,8 @@ class _LoginPageState extends State<LoginPage> {
   bool isPasswordHidden = true;
 
   void login() {
-    if (controllerUsername.text == "admin" &&
-        controllerPassword.text == "admin") {
+    if (controllerUsername.text == "osmar" &&
+        controllerPassword.text == "osmar123") {
       setState(() {
         statusLogin = "Login sukses";
       });

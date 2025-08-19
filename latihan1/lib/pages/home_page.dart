@@ -13,57 +13,47 @@ class HomeController extends GetxController {
     final args = Get.arguments ?? {};
     final username = args["username"] ?? "Guest";
 
-    pages = [
-      CalculatorPage(),
-      FootballPage(),
-      ProfilePage(username: username),
-    ];
+    pages = [CalculatorPage(), FootballPage(), ProfilePage(username: username)];
 
-    titles = [
-      "Calculator Page",
-      "Football Page",
-      "Profile Page",
-    ];
+    titles = ["Calculator Page", "Football Page", "Profile Page"];
   }
 }
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final HomeController controller =
-      Get.put(HomeController(), permanent: true);
+  final HomeController controller = Get.put(HomeController(), permanent: true);
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() => Scaffold(
-          appBar: AppBar(
-            title: Text(controller.titles[controller.currentIndex.value]),
-          ),
-          body: IndexedStack(
-            index: controller.currentIndex.value,
-            children: controller.pages,
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            currentIndex: controller.currentIndex.value,
-            onTap: (index) {
-              controller.currentIndex.value = index;
-            },
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.calculate),
-                label: "Calculator",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.sports_soccer),
-                label: "Football",
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.person),
-                label: "Profile",
-              ),
-            ],
-          ),
-        ));
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          title: Text(controller.titles[controller.currentIndex.value]),
+        ),
+        body: IndexedStack(
+          index: controller.currentIndex.value,
+          children: controller.pages,
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
+          currentIndex: controller.currentIndex.value,
+          onTap: (index) {
+            controller.currentIndex.value = index;
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calculate),
+              label: "Calculator",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.sports_soccer),
+              label: "Football",
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+          ],
+        ),
+      ),
+    );
   }
 }
 
@@ -74,9 +64,16 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        "Ini Profile User: $username",
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Image.asset('assets/isagi.jpg', width: 100, height: 100),
+          const SizedBox(height: 16),
+          Text(
+            "Isagi Yoichi",
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ],
       ),
     );
   }
