@@ -54,14 +54,14 @@ class FootballController extends GetxController {
     ),
     Player(
       profileImage:
-          'https://tse3.mm.bing.net/th/id/OIP.bmNvzaaNdOyEDz7n_leyRgHaE3?pid=Api&P=0&h=180',
+          'https://tse3.mm.bing.net/th/id/OIP.bmNvzaaNdOyEDz7n_leyRgHaE3?pid=Api&P=0&h=180  ',
       nama: "Ryo Ishizaki",
       position: "CB",
       nomorPunggung: 2,
     ),
   ].obs;
 
-  void updatePlayer(int index, Player newPlayer) {
-    players[index] = newPlayer;
-  }
+  void updatePlayer(int index, Player updatedPlayer) {
+  players[index] = updatedPlayer;
+}
 }

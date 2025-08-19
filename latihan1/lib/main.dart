@@ -5,7 +5,6 @@ import 'package:latihan1/pages/calculator_page.dart';
 import 'package:latihan1/routes/pages.dart';
 import 'package:latihan1/routes/routes.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -20,10 +19,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        
+        useMaterial3: true,
       ),
-      initialRoute: AppRoutes.calculator,
-      getPages: AppPages.pages,
+
+      initialRoute: AppRoutes.login,
+      getPages: AppRoutes.routes,
     );
   }
 }

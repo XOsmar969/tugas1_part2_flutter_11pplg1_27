@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:latihan1/login_page.dart';
+import 'package:get/get.dart';
+import 'package:latihan1/routes/routes.dart';
 
-// Reusable TextField Widget
 class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final String label;
@@ -55,35 +56,31 @@ class _RegisterPageState extends State<RegisterPage> {
     }
   }
 
-  void _submitForm() {
-    if (_namaController.text.isEmpty ||
-        _emailController.text.isEmpty ||
-        _passwordController.text.isEmpty ||
-        _gender == null ||
-        _tanggalLahir == null) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text("Harap lengkapi semua data!")),
-      );
-      return;
-    }
-
-    String formattedDate =
-        "${_tanggalLahir!.day}-${_tanggalLahir!.month}-${_tanggalLahir!.year}";
-
-    print("Nama: ${_namaController.text}");
-    print("Email: ${_emailController.text}");
-    print("Password: ${_passwordController.text}");
-    print("Jenis Kelamin: $_gender");
-    print("Tanggal Lahir: $formattedDate");
-
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(const SnackBar(content: Text("Registrasi berhasil!")));
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => const LoginPage()),
+void _submitForm() {
+  if (_namaController.text.isEmpty ||
+      _emailController.text.isEmpty ||
+      _passwordController.text.isEmpty ||
+      _gender == null ||
+      _tanggalLahir == null) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text("Harap lengkapi semua data!")),
     );
+    return;
   }
+
+  String formattedDate =
+      "${_tanggalLahir!.day}-${_tanggalLahir!.month}-${_tanggalLahir!.year}";
+
+  print("Nama: ${_namaController.text}");
+  print("Email: ${_emailController.text}");
+  print("Password: ${_passwordController.text}");
+  print("Jenis Kelamin: $_gender");
+  print("Tanggal Lahir: $formattedDate");
+
+  Get.snackbar("Sukses", "Registrasi berhasil!");
+  Get.offNamed(AppRoutes.login); 
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +104,6 @@ class _RegisterPageState extends State<RegisterPage> {
             ),
             const SizedBox(height: 16),
 
-            // Jenis Kelamin Dropdown
             DropdownButtonFormField<String>(
               decoration: const InputDecoration(
                 labelText: "Jenis Kelamin",
@@ -127,7 +123,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
             const SizedBox(height: 16),
 
-            // Tanggal Lahir Picker
             InkWell(
               onTap: () => _selectDate(context),
               child: InputDecorator(
